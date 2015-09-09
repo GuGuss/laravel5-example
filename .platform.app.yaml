@@ -33,12 +33,12 @@ mounts:
 
 hooks:
     build: |
+        #php artisan key:generate
+    deploy: |
         mkdir storage/app
         mkdir -p storage/framework/cache
         mkdir storage/framework/sessions
         mkdir storage/framework/views
         mkdir storage/logs
-        #php artisan key:generate
-    deploy: |
+        # Only need to run this once.
         php artisan migrate --seed
-        php artisan vendor:publish
